@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin-left: 200px;
+            margin-right: 200px;
+            margin-top: 20px;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Validation in Javascript</h2>
+    <fieldset>
+        <div>
+            <br>
+            Name: <input type="text" placeholder="Name" id="i1">
+            <br><br>
+            Grade: <input type="number" placeholder="grade" id="i2">
+            <br><br>
+            Age: <input type="number" placeholder="Age" id="i3">
+            <br><br>
+            <button onclick="age()">
+                Sign in
+            </button>
+        </div>
+        <p id="p1"></p>
+    </fieldset>
+    <script>
+        function age() {
+            const name = document.getElementById("i1").value;
+            const grade = document.getElementById("i2").value;
+            const age = Number(document.getElementById("i3").value); 
+            
+            const msgbox = document.getElementById("p1");
+            let message = "";
+
+            if (name === "") {
+                message = "Please give your name!";
+                msgbox.style.color = "red";
+            } else if (grade === "") {
+                message = "Please give your grade no.!";
+                msgbox.style.color = "red";
+            } else if (isNaN(age) || age === 0) { // Check if age is a valid number
+                message = "Your age is required!";
+                msgbox.style.color = "red";
+            } else if (age < 18) {
+                message = "You are not an adult! Signing in wasn't successful!";
+                msgbox.style.color = "red";
+            } else {
+                message = "Signing in was successful!";
+                msgbox.style.color = "green";
+            }
+
+            msgbox.innerText = message;
+        }
+    </script>
+</body>
+
+</html>
